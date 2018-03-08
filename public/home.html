@@ -1,0 +1,209 @@
+<html ng-app="mapApp">
+	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>
+<!--     <script type="text/javascript" src="js/angular.min.js"></script>
+ -->		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+   <script> 
+      $(function(){
+          $("#header").load("header.html"); 
+          //$("#footer").load("footer.html"); 
+      });
+      $(function(){
+          //$("#fileupload").load("fileupload.html"); 
+          //$("#footer").load("footer.html"); 
+      });
+</script> 
+	</head>
+	<body>
+    <div id="header"></div>
+    <section>
+      
+		  <div class="container">
+        <div>
+          <h2>Make My Map</h2>
+        <p>Make My Map is an online custom map maker where you can create your own map with the specified pop up markes on it.</p>
+      </div>
+      <div id="fileupload">
+        <div class="container"> <br />
+    <div class="row">
+      
+      <div class="col-md-12">
+      <div class="panel panel-body">
+        <div class="panel-heading"><strong>Upload files</strong> <small> </small></div>
+        <div class="panel-body">
+          <div class="input-group image-preview">
+            <input  id ="selectedFile" placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+            
+            <!-- image-preview-input -->
+            <div id ="fileBrowseBtn" class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+               <input type="file" id="files" name="files"/>          
+            </div>
+            <button id="uploadFileBtn" type="button" class="btn btn-labeled btn-success">
+               <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+          </div>
+          <!-- /input-group image-preview [TO HERE]--> 
+          
+          <br />
+          
+          <!-- Drop Zone -->
+          <!-- <div class="upload-drop-zone" id="drop-zone"> Or drag and drop file here </div> -->
+          <br />
+          <!-- Progress Bar -->
+          
+          <br />
+
+        </div>
+      </div>
+    </div>
+        
+        
+        
+  </div>
+</div>
+
+      </div>
+      <div style="margin: 0 auto;">
+          <form class="form-inline center">
+             <!--  <input class="form-control mr-sm-2" type="text" placeholder="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+              <select class="form-control custom-select mb-2 mr-sm-2 mb-sm-0" id="countrySelecter">
+              <option selected value="default">Choose...</option>
+                </select>
+               <input type="text" class="form-control my-2 mr-sm-3" id="textToDisplayId" placeholder="Text to display" required>
+               <input type="text" class="form-control my-2 mr-sm-2" id="valueId" placeholder="Value" required>
+
+              <div style="padding: 1%">
+                <button type="button"class="btn btn-primary" id="AddRowbtn">Add</button>
+              </div>
+              <div style="padding: 1%">
+                <button type="button" class="btn  btn-primary " id="Submitbtn">Submit</button>
+              </div>
+              <div style="padding: 1%">
+                <button type="button" class="btn  btn-danger " id="ClearRowsbtn">Clear</button>
+              </div>
+              
+               
+          </form>
+        </div>
+      </div>
+    </section>
+      <!--<div class="row">
+        <div class="col-sm-12 col-lg-3">
+          <div>
+            <div class="row">
+            <span>Country</span>
+
+          </div>
+           
+          
+        
+
+          <div class="row">
+               <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="countrySelecter">
+              <option selected value="default">Choose...</option>
+               <option value="state_1">Andra Pradesh</option>
+                <option value="state_2">Arunachal Pradesh</option>
+                <option value="state_3">Assam</option>
+                <option value="state_4">Bihar</option>
+                <option value="state_5">Chhattisgarh</option>
+                <option value="state_6">Goa</option>
+                <option value="state_7">Gujarat</option>
+                <option value="state_8">Haryana</option>
+                <option value="state_9">Himachal Pradesh</option>
+                <option value="state_10">Jammu and Kashmir</option>
+                <option value="state_11">Jharkhand</option>
+                <option value="state_12">Karnataka</option>
+                <option value="state_13">Kerala</option>
+
+                 <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+          </div>
+          
+            
+        </div>
+        </div>
+
+        <div class="col-sm-3 col-lg-3 ">
+          <div class="row">
+            Text to display
+          </div>
+          <div class="row">
+           <!--  <input type="text" class="form-control" id="textToDisplayId" placeholder="Text to display" required>
+          </div>
+        </div>
+         <div class="col-sm-3 col-lg-3">
+          <div class="row">
+            Value
+          </div>
+          <div class="row">
+            <!-- <input type="text" class="form-control" id="valueId" placeholder="Value" required>
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-lg-3">
+          <div class="row">
+            <span> Add</span>
+          </div>
+          <div class="row">
+            <!-- <button type="button" class="btn btn-primary" id="AddRowbtn">Add</button>
+            <button type="button" class="btn btn-primary" id="Submitbtn">Submit</button>
+            <button type="button" class="btn btn-danger" id="ClearRowsbtn">Clear</button> 
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </section>-->
+    <br/><br/>
+    <section>
+      <div class="container">
+      <table class="table" id="Statetable">
+  <thead>
+    <tr>
+      <!--<th>#</th>-->
+      <th>Country</th>
+      <th style="display:none">_id</th>
+      <th>Text to Display</th>
+      <th>Value</th>
+      <th style="display:none"></th>
+      <th style="display:none"></th>
+      <th>Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <!--<tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td><button type="submit" class="btn btn-primary" id="AddRowbtn">Delete</button></td>
+    </tr>
+   <!-- <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>-->
+    <tr id='addr1'></tr>
+
+  </tbody>
+</table>
+</div>
+    </section>
+	</body>
+   <script type="text/javascript" src="js/table.js"></script>
+</html>
